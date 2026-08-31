@@ -106,7 +106,7 @@ async function currentUser() {
 }
 
 export function cloudConfigurationError() {
-  return client ? null : "Lovable Cloud is not connected to this deployment.";
+  return client ? null : "Cloud configuration is unavailable in this deployment.";
 }
 
 export async function getAuthenticatedUser() {
