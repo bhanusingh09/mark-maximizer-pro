@@ -1,9 +1,9 @@
 import { createClient, type SupabaseClient, type User } from "@supabase/supabase-js";
 import type { AuthUser, MarkRecord, ProcessingRun } from "./types";
 
-const supabaseUrl = import.meta.env["VITE_SUPABASE_URL"] as string | undefined;
-const supabaseKey = (import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] ??
-  import.meta.env["VITE_SUPABASE_ANON_KEY"]) as string | undefined;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+const supabaseKey = (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ??
+  import.meta.env.VITE_SUPABASE_ANON_KEY) as string | undefined;
 
 const client =
   supabaseUrl && supabaseKey
