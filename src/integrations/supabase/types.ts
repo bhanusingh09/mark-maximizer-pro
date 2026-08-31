@@ -14,7 +14,122 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      mark_records: {
+        Row: {
+          confidence: number
+          created_at: string
+          id: string
+          issue: string | null
+          max_score: number
+          owner_id: string
+          position: number
+          roll_number: string
+          run_id: string
+          score: number | null
+          status: string
+          student_name: string
+          updated_at: string
+        }
+        Insert: {
+          confidence: number
+          created_at?: string
+          id: string
+          issue?: string | null
+          max_score: number
+          owner_id?: string
+          position: number
+          roll_number: string
+          run_id: string
+          score?: number | null
+          status: string
+          student_name: string
+          updated_at?: string
+        }
+        Update: {
+          confidence?: number
+          created_at?: string
+          id?: string
+          issue?: string | null
+          max_score?: number
+          owner_id?: string
+          position?: number
+          roll_number?: string
+          run_id?: string
+          score?: number | null
+          status?: string
+          student_name?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mark_records_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "processing_runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      processing_runs: {
+        Row: {
+          course: string
+          created_at: string
+          exam: string
+          extraction_method: string
+          file_path: string
+          filename: string
+          flagged_records: number
+          id: string
+          max_score: number
+          mime_type: string
+          owner_id: string
+          section: string
+          source_kind: string
+          status: string
+          total_records: number
+          updated_at: string
+          verified_records: number
+        }
+        Insert: {
+          course: string
+          created_at?: string
+          exam: string
+          extraction_method: string
+          file_path: string
+          filename: string
+          flagged_records?: number
+          id: string
+          max_score: number
+          mime_type: string
+          owner_id?: string
+          section: string
+          source_kind: string
+          status?: string
+          total_records?: number
+          updated_at?: string
+          verified_records?: number
+        }
+        Update: {
+          course?: string
+          created_at?: string
+          exam?: string
+          extraction_method?: string
+          file_path?: string
+          filename?: string
+          flagged_records?: number
+          id?: string
+          max_score?: number
+          mime_type?: string
+          owner_id?: string
+          section?: string
+          source_kind?: string
+          status?: string
+          total_records?: number
+          updated_at?: string
+          verified_records?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
