@@ -36,7 +36,7 @@ function isSupportedMarksheet(file: File) {
   return SUPPORTED_FILE_TYPES.has(file.type.toLowerCase()) || SUPPORTED_FILE_EXTENSIONS.some((extension) => lowerName.endsWith(extension));
 }
 
-const tourSteps: TourStep[] = [
+const tourSteps = [
   {
     view: 'overview',
     eyebrow: 'Welcome to MarkMaxxer',
@@ -167,7 +167,7 @@ export default function MarkMaxxerApp() {
   const [tourRect, setTourRect] = useState<TourRect | null>(null);
   const tourDialogRef = useRef<HTMLDivElement>(null);
   const tourInitializedFor = useRef<string | null>(null);
-  const activeTourStep = tourSteps[tourIndex];
+  const activeTourStep: TourStep = tourSteps[tourIndex] ?? tourSteps[0];
 
   useEffect(() => {
     setAuthUser(getLocalUser());
@@ -321,14 +321,14 @@ export default function MarkMaxxerApp() {
     else {
       const nextIndex = tourIndex + 1;
       setTourIndex(nextIndex);
-      setView(tourSteps[nextIndex].view);
+      setView((tourSteps[nextIndex] ?? tourSteps[0]).view);
     }
   };
 
   const previousTourStep = () => {
     const previousIndex = Math.max(0, tourIndex - 1);
     setTourIndex(previousIndex);
-    setView(tourSteps[previousIndex].view);
+    setView((tourSteps[previousIndex] ?? tourSteps[0]).view);
   };
 
   const extractMarks = async () => {

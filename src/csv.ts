@@ -103,7 +103,7 @@ export function parseMarksheetCsv(text: string): CsvMarksheetRow[] {
   const table = parseCsv(text);
   if (table.length < 2) throw new Error('The CSV does not contain any student records.');
 
-  const headers = table[0];
+  const headers = table[0] ?? [];
   const rollIndex = findHeaderIndex(headers, HEADER_ALIASES.rollNumber);
   const nameIndex = findHeaderIndex(headers, HEADER_ALIASES.studentName);
   const scoreIndex = findHeaderIndex(headers, HEADER_ALIASES.score);
